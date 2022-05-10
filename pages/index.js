@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Card, Radio, Modal, InputNumber, Space, Button, message } from "antd";
 
 const Home = () => {
+  const [gender, setGender] = useState();
   const [age, setAge] = useState();
   const [weight, setWeight] = useState();
   const [height, setHeight] = useState();
@@ -15,6 +16,7 @@ const Home = () => {
   function genderHandler(e) {
     // console.log(`checked = ${e.target.value}`);
     console.log(e.target.value);
+    setGender(e.target.value);
     // setValue(e.target.value);
     // message.info(`You have selected: ${e.target.value}`);
     // setIsModalVisible(true);
@@ -41,7 +43,18 @@ const Home = () => {
     setHeight(value);
   };
 
+  const resetFields = () => {
+    setAge();
+    setWeight();
+    setHeight();
+  };
+
   const calculateBMI = () => {
+    if (!gender || gender === "" || gender === NaN) {
+      message.error("Please Select Gender");
+      return;
+    }
+
     if (!age || age === null || age === NaN) {
       message.error("Enter Valid Age");
       return;
@@ -79,6 +92,7 @@ const Home = () => {
       setHealthCondition("Obesity");
     }
     setIsModalVisible(true);
+    resetFields();
   };
 
   return (
