@@ -14,3 +14,21 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.site-card-border-less-wrapper {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  width: 50%;
+  background: #ececec;
+  text-align: center;
+}
+.card-content {
+  text-align: center;
+  justify-content: center;
+}
+
+.bmi-result {
+  text-align: center;
+}
