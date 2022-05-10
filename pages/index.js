@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import { Card, Radio, Modal, InputNumber, Space, Button } from "antd";
+import { Card, Radio, Modal, InputNumber, Space, Button, message } from "antd";
 
 const Home = () => {
   const [age, setAge] = useState();
@@ -42,7 +42,21 @@ const Home = () => {
   };
 
   const calculateBMI = () => {
+    if (!age || age === null || age === NaN) {
+      message.error("Enter Valid Age");
+      return;
+    }
+    if (!weight || weight === null || weight === NaN) {
+      message.error("Enter Valid Weight");
+      return;
+    }
+
+    if (!height || height === null || height === NaN) {
+      message.error("Enter Valid Height");
+      return;
+    }
     const weightCal = weight;
+
     // console.log(`Weight is = ${weightCal}`);
     const heightMeter = height * 0.01;
     // console.log(`Height in Meter is = ${heightMeter}`);
