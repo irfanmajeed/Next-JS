@@ -1,7 +1,17 @@
 import React from "react";
 import { useState } from "react";
 
-import { Card, Radio, Modal, InputNumber, Space, Button, message } from "antd";
+import {
+  Card,
+  Radio,
+  Modal,
+  InputNumber,
+  Space,
+  Button,
+  message,
+  Row,
+  Col,
+} from "antd";
 
 const Home = () => {
   const [gender, setGender] = useState();
@@ -10,7 +20,6 @@ const Home = () => {
   const [height, setHeight] = useState();
   const [bmi, setBMI] = useState();
   const [healthCondition, setHealthCondition] = useState("");
-
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   function genderHandler(e) {
@@ -98,57 +107,61 @@ const Home = () => {
   return (
     <>
       <div className="site-card-border-less-wrapper">
-        <Card title="BMI Calculator">
-          <div className="card-content">
-            <Space direction="vertical" size={"large"}>
-              <Radio.Group onChange={genderHandler}>
-                <Radio
-                  // checked={isMaleChecked}
-                  // onChange={onMaleChange}
-                  value={"Male"}
-                >
-                  Male
-                </Radio>
-                <Radio
-                  // checked={isFemaleChecked}
-                  // onChange={onFemaleChange}
-                  value={"Female"}
-                >
-                  Female
-                </Radio>
-              </Radio.Group>
+        <Row align="center">
+          <Col xs={24} sm={20}>
+            <Card title="BMI Calculator" className="card">
+              <div className="card-content">
+                <Space direction="vertical" size={"large"}>
+                  <Radio.Group onChange={genderHandler}>
+                    <Radio
+                      // checked={isMaleChecked}
+                      // onChange={onMaleChange}
+                      value={"Male"}
+                    >
+                      Male
+                    </Radio>
+                    <Radio
+                      // checked={isFemaleChecked}
+                      // onChange={onFemaleChange}
+                      value={"Female"}
+                    >
+                      Female
+                    </Radio>
+                  </Radio.Group>
 
-              <InputNumber
-                addonBefore="Age"
-                addonAfter="2 - 150"
-                value={age}
-                min={2}
-                max={150}
-                defaultValue={65}
-                onChange={ageHandler}
-              />
+                  <InputNumber
+                    addonBefore="Age"
+                    addonAfter="2 - 150"
+                    value={age}
+                    min={2}
+                    max={150}
+                    // defaultValue={65}
+                    onChange={ageHandler}
+                  />
 
-              <InputNumber
-                addonBefore="Weight"
-                addonAfter="kg"
-                value={weight}
-                onChange={weightHandler}
-              />
+                  <InputNumber
+                    addonBefore="Weight"
+                    addonAfter="kg"
+                    value={weight}
+                    onChange={weightHandler}
+                  />
 
-              <InputNumber
-                addonBefore="Height"
-                addonAfter="cm"
-                value={height}
-                onChange={heightHandler}
-              />
+                  <InputNumber
+                    addonBefore="Height"
+                    addonAfter="cm"
+                    value={height}
+                    onChange={heightHandler}
+                  />
 
-              <Button type="primary" onClick={calculateBMI}>
-                Calculate BMI
-              </Button>
-            </Space>
-            {/* <DatePicker format={"DD/MM/YYYY"} onChange={dateP} /> */}
-          </div>
-        </Card>
+                  <Button type="primary" onClick={calculateBMI}>
+                    Calculate BMI
+                  </Button>
+                </Space>
+                {/* <DatePicker format={"DD/MM/YYYY"} onChange={dateP} /> */}
+              </div>
+            </Card>
+          </Col>
+        </Row>
       </div>
       <Modal
         title="BMI Result"
